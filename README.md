@@ -1,9 +1,9 @@
-# SciIE (Under Construction)
+# DyGIE (Under Construction)
 
 This repository contains code and models for replicating results from the following publication:
-* [Multi-Task Identification of Entities, Relations, and Coreference for  Scientific Knowledge Graph Construction](https://arxiv.org/pdf/1808.09602.pdf)(EMNLP, 2018)
-* [Yi Luan](http://ssli.ee.washington.edu/~luanyi/), [Luheng He](https://homes.cs.washington.edu/~luheng), [Mari Ostendorf](https://ssli.ee.washington.edu/people/mo/), [Hannaneh Hajishirzi](https://homes.cs.washington.edu/~hannaneh/)
-* In EMNLP 2018
+* [A General Framework for Information Extraction using Dynamic Span Graphs](https://arxiv.org/pdf/1808.09602.pdf)(NAACL, 2019)
+* [Yi Luan](http://ssli.ee.washington.edu/~luanyi/), [Dave Wadden], [Luheng He](https://homes.cs.washington.edu/~luheng), [Amy Shah], [Mari Ostendorf](https://ssli.ee.washington.edu/people/mo/), [Hannaneh Hajishirzi](https://homes.cs.washington.edu/~hannaneh/)
+* In NAACL 2019
 
 Part of the codebase is extended from [lsgn](https://github.com/luheng/lsgn) and [e2e-coref](https://github.com/kentonl/e2e-coref). 
 
