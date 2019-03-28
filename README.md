@@ -5,7 +5,7 @@ This repository contains code and models for replicating results from the follow
 * [Yi Luan](http://ssli.ee.washington.edu/~luanyi/), Dave Wadden, [Luheng He](https://homes.cs.washington.edu/~luheng), [Amy Shah](https://www.linkedin.com/in/amy-shah14), [Mari Ostendorf](https://ssli.ee.washington.edu/people/mo/), [Hannaneh Hajishirzi](https://homes.cs.washington.edu/~hannaneh/)
 * In NAACL 2019
 
-Part of the codebase is extended from [lsgn](https://github.com/luheng/lsgn) and [e2e-coref](https://github.com/kentonl/e2e-coref). 
+Part of the codebase is extended from [SciIE](https://bitbucket.org/luanyi/scierc/src/master/), [lsgn](https://github.com/luheng/lsgn) and [e2e-coref](https://github.com/kentonl/e2e-coref). 
 
 ### Requirements
 * Python 2.7
@@ -20,18 +20,20 @@ Part of the codebase is extended from [lsgn](https://github.com/luheng/lsgn) and
 * tensorflow_hub (for ELMo)
 
 * [GloVe](https://nlp.stanford.edu/projects/glove/) embeddings and downloading data:  
-`./scripts/fetch_required_data.sh` 
-* Build kernels: `./scripts/build_custom_kernels.sh` (Please make adjustments to the script based on your OS/gcc version)
+`./scripts/fetch_required_data.sh`
+which will download the GLoVe Embeddings, pre-processed dataset (in jason format) and cached ELMo embeddings. The link to SciERC, WLP and GENIA datasets are included. Processed ACE05 and ACE04 datasets will be provided if proved to have LDC License. 
+
+* Build kernels: `./model1/build_custom_kernels.sh` (Please make adjustments to the script based on your OS/gcc version)
 
 ## Setting up for ELMo (if you use your own data)
 * Some of our models are trained with the [ELMo embeddings](https://allennlp.org/elmo). We use the ELMo model loaded by [tensorflow_hub](https://www.tensorflow.org/hub/modules/google/elmo/1).
 * It is recommended to cache ELMo embeddings for training and validating efficiency. Please modify the corresponding filenames and run
-`python generate_elmo.py ` to generate ELMo embeddings.
+`python generate_elmo.py ` to generate ELMo embeddings for your own data.
 
 
 ## Training Instructions
 
-* Experiment configurations are found in `experiments.conf`
+* Experiment configurations are found in `model1/experiments.conf`
 * The parameter `main_metrics` can be selected from coref, ner, relation or any combination of the three, such as coref_ner_relation which indicates the F1 score for averaged F1 score for coref, ner and relation. The model is tuned and saved based on the resulting averaged F1 score.
 * The parameters `ner_weight`, `coref_weight` and `relation_weight` are weights for the multi-task objective. If set the weight to 0 then the task is not trained.
 * Choose an experiment that you would like to run, e.g. `scientific_best_ner`
@@ -55,4 +57,4 @@ Part of the codebase is extended from [lsgn](https://github.com/luheng/lsgn) and
 `python write_single.py <experiment>`
 
 ## Best Models ##
-* Best models can be downloaded from here ([Best NER Model](http://nlp.cs.washington.edu/sciIE/models/scientific_best_ner.zip),[Best Coref Model](http://nlp.cs.washington.edu/sciIE/models/scientific_best_coref.zip),[Best Relation Model](http://nlp.cs.washington.edu/sciIE/models/scientific_best_relation.zip)), unzip and put the model under ./logs . For making predictings or testing results use the same command as the previous steps.
+* Best models can be downloaded from here ([WLP entity model](http://ssli.ee.washington.edu/tial/projects/DyGIE/models/wlp_best_ner.tar.gz),[WLP relation model](http://ssli.ee.washington.edu/tial/projects/DyGIE/models/wlp_best_relation.tar.gz),[GENIA entity model](http://ssli.ee.washington.edu/tial/projects/DyGIE/models/genia_best_ner.tar.gz), [SciERC entity model](http://ssli.ee.washington.edu/tial/projects/DyGIE/models/scierc_best_ner.tar.gz),[SciERC relation model](http://ssli.ee.washington.edu/tial/projects/DyGIE/models/scierc_best_relation.tar.gz), [ACE05 relation Model](http://ssli.ee.washington.edu/tial/projects/DyGIE/models/ace05_best_relation.tar.gz), [ACE05 nested NER](http://ssli.ee.washington.edu/tial/projects/DyGIE/models/ace2005_best_nested_ner.tar.gz), [ACE04 nested NER](http://ssli.ee.washington.edu/tial/projects/DyGIE/models/ace2004_best_nested_ner.tar.gz) unzip and put the model under ./model1/logs . For making predictings or testing results use the same command as the previous steps.
