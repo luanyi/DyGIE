@@ -30,10 +30,13 @@ which will download the GLoVe Embeddings, pre-processed dataset (in jason format
 * It is recommended to cache ELMo embeddings for training and validating efficiency. Please modify the corresponding filenames and run
 `python generate_elmo.py ` to generate ELMo embeddings for your own data.
 
+##Two Variations of DyGIE
+* model1: Coreference propagation layer at the bottom and relation propagation layer at the top (same as described in Figure 2 in the paper). This model architecture is used for all datasets all tasks except for ACE05 NER task.
+* model2: Relation propagation layer at the bottom and coreference propagation layer at the top (swap CorefProp and RelProp in Figure 2). This model architecture is used for ACE05 NER task.
 
 ## Training Instructions
 
-* Experiment configurations are found in `model1/experiments.conf`
+* Experiment configurations are found in `model*/experiments.conf`
 * The parameter `main_metrics` can be selected from coref, ner, relation or any combination of the three, such as coref_ner_relation which indicates the F1 score for averaged F1 score for coref, ner and relation. The model is tuned and saved based on the resulting averaged F1 score.
 * The parameters `ner_weight`, `coref_weight` and `relation_weight` are weights for the multi-task objective. If set the weight to 0 then the task is not trained.
 * Choose an experiment that you would like to run, e.g. `scientific_best_ner`
