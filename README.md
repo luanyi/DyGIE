@@ -30,7 +30,7 @@ which will download the GLoVe Embeddings, pre-processed dataset (in jason format
 * It is recommended to cache ELMo embeddings for training and validating efficiency. Please modify the corresponding filenames and run
 `python generate_elmo.py ` to generate ELMo embeddings for your own data.
 
-##Two Variations of DyGIE
+## Two Variations of DyGIE
 * model1: Coreference propagation layer at the bottom and relation propagation layer at the top (same as described in Figure 2 in the paper). This model architecture is used for all datasets all tasks except for ACE05 NER task.
 * model2: Relation propagation layer at the bottom and coreference propagation layer at the top (swap CorefProp and RelProp in Figure 2). This model architecture is used for ACE05 NER task.
 
