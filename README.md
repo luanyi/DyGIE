@@ -54,7 +54,7 @@ which will download the GLoVe Embeddings, pre-processed dataset (in jason format
 
 ## Other Quirks
 
-* It does not use GPUs by default. Instead, it looks for the `GPU` environment variable, which the code treats as shorthand for `CUDA_VISIBLE_DEVICES`.
+* Use the parameter `gpu` to set the gpu ID. If using CPU, set `gpu` to any arbitary number. 
 * The evaluator should not be run on GPUs, since evaluating full documents does not fit within GPU memory constraints.
 * The training runs indefinitely and needs to be terminated manually. 
 
