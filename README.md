@@ -1,7 +1,7 @@
 # DyGIE (Under Construction)
 
 This repository contains code and models for replicating results from the following publication:
-* [A General Framework for Information Extraction using Dynamic Span Graphs](https://arxiv.org/pdf/1808.09602.pdf)(NAACL, 2019)
+* [A General Framework for Information Extraction using Dynamic Span Graphs](https://arxiv.org/pdf/1904.03296.pdf)(NAACL, 2019)
 * [Yi Luan](http://ssli.ee.washington.edu/~luanyi/), Dave Wadden, [Luheng He](https://homes.cs.washington.edu/~luheng), [Amy Shah](https://www.linkedin.com/in/amy-shah14), [Mari Ostendorf](https://ssli.ee.washington.edu/people/mo/), [Hannaneh Hajishirzi](https://homes.cs.washington.edu/~hannaneh/)
 * In NAACL 2019
 
@@ -42,7 +42,7 @@ which will download the GLoVe Embeddings, pre-processed dataset (in jason format
 * If coreference is used as an auxiliary task, `coref_weight` is always set to 0. The training of the main task and the training of coreference objective functions take turns. The frequency of how often the auxiliary task is trained is controlled by the parameter `coref_freq`.
 * If training coreference as the main task, set `coref_weight` to 1 and `coref_only` flag to 1.
 * The number of iteration in CorefProp is controlled by `coref_depth`, the number of iteration in RelProp is controlled by `rel_prop`
-* Choose an experiment that you would like to run, e.g. `scientific_best_ner`
+* Choose an experiment that you would like to run, e.g. `genia_best_ner`
 
 * For a single-machine experiment, run the following two commands in parallel:
 	* `python singleton.py <experiment>`

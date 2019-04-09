@@ -220,11 +220,8 @@ def get_rel_scores(entity_emb, entity_scores, num_labels, config, dropout, num_p
 
   similarity_emb = e1_emb_expanded * e2_emb_expanded  # [num_sents, num_ents, num_ents, emb]
 
-  # if config['add_ner_emb']:
-  #   pair_emb_list = [ner1_emb_tiled, ner2_emb_tiled, e1_emb_tiled, e2_emb_tiled, similarity_emb]
-  # else:
   pair_emb_list = [e1_emb_tiled, e2_emb_tiled, similarity_emb]
-  # pair_emb_list = [e1_emb_tiled, e2_emb_tiled, similarity_emb]
+
   pair_emb = tf.concat(pair_emb_list, 3)  # [num_sentences, num_ents, num_ents, emb]
   pair_emb_size = util.shape(pair_emb, 3)
   flat_pair_emb = tf.reshape(pair_emb, [num_sentences * num_entities * num_entities, pair_emb_size])
@@ -238,7 +235,7 @@ def get_rel_scores(entity_emb, entity_scores, num_labels, config, dropout, num_p
     flat_rel_scores = tf.reshape(rel_scores, [num_sentences * num_entities* num_entities, num_labels - 1])
     with tf.variable_scope("rel_W"):
       entity_emb_size = util.shape(entity_emb, -1)
-      relation_transition = util.projection(tf.nn.relu(flat_rel_scores), entity_emb_size)
+      relation_transition = util.projection(tf.nn.relu(flat_rel_scores), entity_emb_size) #f(V)A_R in Eq. 3
       e2_emb_tiled = tf.reshape(e2_emb_tiled, [num_sentences * num_entities * num_entities, entity_emb_size])
       rel_mask = tf.reshape(rel_mask, [-1])
       tranformed_embeddings = tf.multiply(tf.transpose(relation_transition * e2_emb_tiled), tf.to_float(rel_mask)) #[entity_emb_size, num_sents * num_ents * num_ents]
