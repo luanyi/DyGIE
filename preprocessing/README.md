@@ -13,6 +13,7 @@
 * ACE 2005 (https://catalog.ldc.upenn.edu/LDC2006T06)
 
 # Usage
+Code adapted from [LSTM-ER](https://github.com/tticoin/LSTM-ER/tree/master/data)
 
 ## download Stanford Core NLP & POS tagger
 
