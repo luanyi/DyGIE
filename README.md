@@ -21,7 +21,7 @@ Part of the codebase is extended from [SciIE](https://bitbucket.org/luanyi/scier
 
 * [GloVe](https://nlp.stanford.edu/projects/glove/) embeddings and downloading data:  
 `./scripts/fetch_required_data.sh`
-which will download the GLoVe Embeddings, pre-processed dataset (in jason format) and cached ELMo embeddings. The link to SciERC, WLP and GENIA datasets are included. Scripts for processing ACE05, ACE04 and ontonotes are included in [preprocessing](https://github.com/luanyi/DyGIE/tree/master/preprocessing) folder 
+which will download the GLoVe Embeddings, pre-processed dataset (in jason format) and cached ELMo embeddings. The link to SciERC, WLP and GENIA datasets are included. Scripts for processing ACE05, ACE04 and ontonotes to jason format are included in [preprocessing](https://github.com/luanyi/DyGIE/tree/master/preprocessing) folder 
 
 * Build kernels: `./model1/build_custom_kernels.sh` (Please make adjustments to the script based on your OS/gcc version)
 
