@@ -45,9 +45,10 @@ if __name__ == "__main__":
   coref_config['relation_weight'] = 0
   # coref_config['batch_size'] = 30
   coref_config['coref_depth'] = 0
-  coref_data = LSGNData(coref_config)
   model = SRLModel(data, config)
-  coref_model = SRLModel(coref_data, coref_config)
+  if config['coref_freq']:
+    coref_data = LSGNData(coref_config)
+    coref_model = SRLModel(coref_data, coref_config)
   saver = tf.train.Saver()
   init_op = tf.global_variables_initializer()
 
@@ -74,7 +75,8 @@ if __name__ == "__main__":
   # a checkpoint, and closing when done or an error occurs.
   with sv.managed_session() as session:
     data.start_enqueue_thread(session)
-    coref_data.start_enqueue_thread(session)
+    if config['coref_freq']:
+      coref_data.start_enqueue_thread(session)
     accumulated_loss = 0.0
     initial_time = time.time()
     while not sv.should_stop():
