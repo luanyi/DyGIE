@@ -156,6 +156,12 @@ for stanfordfn in glob.glob('./corpus/dev/' + '*.stanford.so'):
 outfn = '../../data/ace05/json/dev.json'
 WriteDocs(docs, outfn)
 
+docs = []
+entity_set = set()
+rel_set = set()
+nercount = 0
+relcount = 0
+sentcount = 0
 for stanfordfn in glob.glob('./corpus/test/' + '*.stanford.so'):    
     txtfn = stanfordfn.replace('stanford.so','txt')
     annfn = stanfordfn.replace('stanford.so','ann')
@@ -165,6 +171,12 @@ for stanfordfn in glob.glob('./corpus/test/' + '*.stanford.so'):
 outfn = '../../data/ace05/json/test.json'
 WriteDocs(docs, outfn)
 
+docs = []
+entity_set = set()
+rel_set = set()
+nercount = 0
+relcount = 0
+sentcount = 0
 for stanfordfn in glob.glob('./corpus/train/' + '*.stanford.so'):    
     txtfn = stanfordfn.replace('stanford.so','txt')
     annfn = stanfordfn.replace('stanford.so','ann')
