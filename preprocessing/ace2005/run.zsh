@@ -62,4 +62,4 @@ for i in `cat split/test`
 do
 mv corpus/$i* corpus/test
 done
-cp corpus/train/* corpus/dev/* 
+
